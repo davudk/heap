@@ -9,7 +9,7 @@ namespace heap {
         };
         static HeapConstraint<string> cons = (parent, child) => {
             // this indicates that the parent must
-            // alphabetically-preceede the child
+            // alphabetically-precede the child
             return parent.CompareTo(child) <= 0;
         };
 
