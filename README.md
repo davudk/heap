@@ -2,13 +2,13 @@
 
 A straightforward implementation of a heap. It is implemented generically, and accepts a custom constraint. The initial capacity can be specified at initialization and changed at any time. A initial array can be used to construct the heap.
 
-**(Ex 1) a simple min-heap for strings**
+**(Ex 1) Using the heap factory (on T types where T : IComparable)**
 
 ```csharp
 var h = HeapFactory.CreateMinHeap<string>();
 ```
 
-**(Ex 2) explicitly specifying the heap constraint**
+**(Ex 2) Explicitly specifying the heap constraint**
 
 ```csharp
 HeapConstraint<string> cons = (parent, child) => {
