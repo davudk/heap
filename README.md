@@ -2,7 +2,13 @@
 
 A straightforward implementation of a heap. It is implemented generically, and accepts a custom constraint. The initial capacity can be specified at initialization and changed at any time. A initial array can be used to construct the heap.
 
-**Example:** a simple min-heap for strings.
+**(Ex 1) a simple min-heap for strings**
+
+```csharp
+var h = HeapFactory.CreateMinHeap<string>();
+```
+
+**(Ex 2) explicitly specifying the heap constraint**
 
 ```csharp
 HeapConstraint<string> cons = (parent, child) => {
@@ -12,7 +18,7 @@ HeapConstraint<string> cons = (parent, child) => {
     
     // if the return value is true, then the
     // parent-child integrity constraint is satisfied
-    // otherwise, a shift must occur to reach a valid state
+    // otherwise, shifts will occur to reach a valid state
 };
 
 var h = new Heap<string>(constraint: cons);
