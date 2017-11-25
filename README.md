@@ -22,4 +22,9 @@ HeapConstraint<string> cons = (parent, child) => {
 };
 
 var h = new Heap<string>(constraint: cons);
+
+
+// cons is a delegate of form: bool HeapConstraint<T>(T parent, T child)
+// it can be embedded directly into the constructor:
+var h2 = new Heap<string>((p, c) => p.CompareTo(c) <= 0);
 ```
