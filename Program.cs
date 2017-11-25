@@ -3,20 +3,14 @@ using System.Collections.Generic;
 
 namespace heap {
     class Program {
-        static string[] data = new[] {
-            "Pear", "Apple", "Orange", "Banana",
-            "Grape", "Watermelon", "Avocado", "Cherry"
-        };
-        static HeapConstraint<string> cons = (parent, child) => {
-            // this indicates that the parent must
-            // alphabetically-precede the child
-            return parent.CompareTo(child) <= 0;
-        };
-
         static void Main(string[] args) {
-            
+            string[] data = new[] {
+                "Pear", "Apple", "Orange", "Banana",
+                "Grape", "Watermelon", "Avocado", "Cherry"
+            };
+
             // Create a min-heap of strings
-            var h = new Heap<string>(cons);
+            var h = HeapFactory.CreateMinHeap<string>();
             
             // Insert the data collection into the heap
             foreach (string item in data) {
