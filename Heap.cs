@@ -34,12 +34,21 @@ namespace heap {
             Initialize(new T[capacity], 0, constraint);
         }
 
-        public Heap(T[] src, HeapConstraint<T> constraint) {
+        public Heap(T[] src, HeapConstraint<T> constraint, int additionalCapacity = 0) {
             if (src == null) {
                 throw new ArgumentNullException(nameof(src));
+            } else if (additionalCapacity < 0) {
+                throw new ArgumentOutOfRangeException(nameof(additionalCapacity));
             }
 
-            Initialize((T[])src.Clone(), src.Length, constraint);
+            T[] buffer = new T[src.Length + additionalCapacity];
+            Array.Copy(src, 0, buffer, 0, src.Length);
+
+            Initialize(buffer, src.Length, constraint);
+
+            for (int i = 0; i < Count / 2; i++) {
+                ShiftDown(i);
+            }
         }
 
         void Initialize(T[] src, int count, HeapConstraint<T> constraint) {

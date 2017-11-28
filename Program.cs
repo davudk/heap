@@ -9,13 +9,10 @@ namespace heap {
                 "Grape", "Watermelon", "Avocado", "Cherry"
             };
 
-            // Create a min-heap of strings
-            var h = HeapFactory.CreateMinHeap<string>();
-            
-            // Insert the data collection into the heap
-            foreach (string item in data) {
-                h.Insert(item);
-            }
+            // Create a min-heap of strings directly from the input array.
+            // This is more efficient than inserting each with a loop.
+            // Also: T is string, implicitly deduced.
+            var h = HeapFactory.CreateMinHeap(data);
 
             // Empty the heap in sorted order
             while (h.Count > 0) {
